@@ -24,6 +24,22 @@ class StringUtilsTest {
     }
 
     @Test
+    @Tag("Critical")
+    @DisplayName("Metoda 'getLastLetter' zwraca ostatnią literę podanego słowa")
+    void getLastLetter_returns_last_letter() {
+        String s = stringUtils.getLastLetter("wsb");
+        assertEquals("b", s);
+
+        assertAll("words",
+                () -> assertEquals(stringUtils.getLastLetter("wsb"), "b"),
+                () -> assertEquals(stringUtils.getLastLetter("JUnit"), "t"),
+                () -> assertEquals(stringUtils.getLastLetter("WSB"), "B"),
+                () -> assertEquals(stringUtils.getLastLetter(null), ""),
+                () -> assertEquals(stringUtils.getLastLetter(""), ""));
+    }
+
+
+    @Test
     void getFirstLetter_returns_empty_string_when_given_empty_string() {
         String s = stringUtils.getFirstLetter("");
         assertEquals(s, "");
